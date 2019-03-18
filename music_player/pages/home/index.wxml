@@ -1,0 +1,18 @@
+<!--pages/home/index.wxml-->
+<view class='container'>
+<!-- 头部 -->
+  <view class='header'>
+    <navigator class='on' hover-class='on'>推荐</navigator>
+    <navigator hover-class='on'>歌单</navigator>
+    <navigator hover-class='on'>搜索</navigator>
+  </view>
+
+  <!-- banner -->
+  <view class='home-banner'>
+    <swiper autoplay interval='3000' indicator-active-color='#b3d4db' indicator-dots indicator-color='#fff'>
+      <swiper-item wx:for='000'>
+        <image src='/images/bg.jpg'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
