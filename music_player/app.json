@@ -1,9 +1,9 @@
 {
-  "pages":[
+  "pages": [
     "pages/home/index"
   ],
-  "window":{
+  "window": {
     "navigationBarBackgroundColor": "#b3d4db",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

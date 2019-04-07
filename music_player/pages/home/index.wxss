@@ -1,4 +1,11 @@
+/* 引入CSS */
+@import "/template/song/song.wxss";
+@import "/template/public/bottom-play.wxss";
+
 /* pages/home/index.wxss */
+.container{
+  padding-bottom: 50px;
+}
 /* header */
 .header{
   display: flex;
@@ -30,4 +37,43 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
+}
+/* 国家地区 */
+.orign-type{
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0 10px;
+  border-bottom: 1px solid #efefef;
+}
+.orign-type navigator image{
+  width: 80rpx;
+  height: 80rpx;
+}
+.orign-type navigator text{
+  display: block;
+  text-align: center;
+}
+
+/* 热门歌曲 */
+.hot-music{
+  margin-top: 25px;
+}
+.music-item + .music-item{
+  margin-top: 15px;
+}
+.list-head{
+  padding-bottom: 10px;
+}
+.list-head image{
+  margin-left: 10px;
+  margin-right: 5px;
+  width: 24px;
+  height: 24px;
+  vertical-align: bottom;
+}
+.list-head text{
+  vertical-align: bottom;
+}
+.list-body{
+  padding: 0 10px;
 }

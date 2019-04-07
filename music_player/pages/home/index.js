@@ -1,66 +1,77 @@
-// pages/home/index.js
-Page({
+import pageModule from "../../lib/Page.js"
+import  Banner from "../../module/banner.js"
+import { region, sheet, request} from "../../common/comList.js"
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+// 当前页面的命名空间
+const $namespace = "home/index";
 
-  },
+// 实例page模型
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+const $page = new pageModule({
 
-  },
+  // 监听一个加载事件
+  onLoad(o){
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    // 加载banner图信息
+    const banner = new Banner(this);
+    
+    banner.getBanner()
+    .then(data=>{
+      
+      this.setData({banner :data});
+    });
 
-  },
+    // 设置国家地区
+    this.setData({ region });
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    // 获取歌单信息
+    this.getSheet()
+    .findNameSpace($namespace)
+    .then(this.setSheet.bind(this));
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  // 获取歌单信息
+  getSheet(){
 
+    const sheetPromise = [];
+
+    // 循环歌单
+    sheet.forEach(item=>{
+
+      const p = new Promise((resolve)=>{
+
+        const url = request.topid + item.id;
+
+        wx.request({
+          url: url,
+          success: resolve
+        })
+      })
+      sheetPromise.push(p);
+    });
+
+    return{
+      nameSpace: $namespace,
+      data: Promise.all(sheetPromise)
+    }
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  // 设置歌单信息
+  setSheet(arg){
+   
+    const sheetData = [];
 
-  },
+    arg.forEach(res=>{
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+      sheetData.push(Object.assign({
+        songs: res.data.songs
+      }, sheet[key]));
+    });
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({ sheets: sheetData})
   }
-})
+});
+
+// 调用page
+$page.start();

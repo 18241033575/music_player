@@ -1,0 +1,17 @@
+<!-- 底部播放器 -->
+<template name='bottom-play'> 
+  <view class='bottom-player'>
+    <view class='player-cover'>
+      <image src='/images/bg.jpg' mode='widthFix'></image>
+    </view>
+
+  <view class='player-btn'>
+      <image src='/images/download.png'></image>
+    </view>
+
+    <view class='player-album'>
+      <text class='subtr'>一百万个可能一百万个可能一百万个可能一百万个可能一百万个可能</text>
+      <text>歌手</text>
+    </view>
+  </view>
+</template>

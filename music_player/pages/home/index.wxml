@@ -1,3 +1,7 @@
+<!-- 引入模板 -->
+<import src='/template/song/song.wxml' />
+<import src='/template/public/bottom-play.wxml' />
+
 <!--pages/home/index.wxml-->
 <view class='container'>
 <!-- 头部 -->
@@ -10,9 +14,32 @@
   <!-- banner -->
   <view class='home-banner'>
     <swiper autoplay interval='3000' indicator-active-color='#b3d4db' indicator-dots indicator-color='#fff'>
-      <swiper-item wx:for='000'>
-        <image src='/images/bg.jpg'></image>
+      <swiper-item wx:for="{{ banner }}" bindtap="actionBanner" data-action='{{bannerItem.atype}}' wx:key='index' wx:for-item="bannerItem">
+        <image src="{{bannerItem.img}}"></image>
       </swiper-item>
     </swiper>
   </view>
+
+  <!-- 国家地区 -->
+  <view class='orign-type'>
+    <navigator wx:for='{{ region }}' wx:for-item='regionItem'  wx:key='index'>
+      <image src='/images/Music.png'></image>
+      <text>{{ regionItem.name }}</text>
+    </navigator>
+  </view>
+
+  <!-- 热门歌曲 -->
+  <view class='hot-music'>
+    <view class='music-item' wx:for='{{sheets}}' wx:key='index' wx:for-item="sheet">
+      <navigator class='list-head' hover-class='none'>
+        <image src='/images/list-cell.png'></image>
+        <text>{{sheet.name}}</text>
+      </navigator>
+
+      <view class='list-body'>
+        <template is='song-list' data="{{...sheet}}" />
+      </view>
+    </view> 
+  </view>
 </view>
+<template is='bottom-play' />
