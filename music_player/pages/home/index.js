@@ -61,11 +61,11 @@ const $page = new pageModule({
   setSheet(arg){
    
     const sheetData = [];
-
+    console.log(arg);
     arg.forEach(res=>{
 
       sheetData.push(Object.assign({
-        songs: res.data.songs
+        songs: res.data.artists
       }, sheet[key]));
     });
 
