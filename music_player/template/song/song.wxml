@@ -1,6 +1,8 @@
+<wxs src='../../common/list.wxs' module='navi'></wxs>
+
 <!-- 歌曲的列表 -->
 <template name='song-list'>  
-  <view class='song-list songs-view3' bindtap='onPlayer' data-songs="{{songs}}">
+  <view  class='song-list songs-view3' data-songs="{{songs}}">
     <template is='song-view' wx:for='{{songs}}' wx:for-item='song' data='{{song}}' wx:key='index' />
   </view>
 </template>
@@ -8,8 +10,8 @@
 
 <!-- 歌曲的视图 -->
 <template name='song-view'>  
-  <view class='song'>
+  <navigator url='{{navi.deSearchUrl(song)}}' class='song'>
     <image src='{{song.picUrl}}' mode='widthFix' data-song="{{song}}"></image>
     <text data-song="{{song}}">{{song.name}}</text>
-  </view>
+  </navigator>
 </template>

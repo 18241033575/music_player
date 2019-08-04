@@ -20,7 +20,7 @@ export default class AudioManager{
 
     // 播放器的属性
     const audioAttr = {
-      src: "http://ws.stream.qqmusic.qq.com/228859369.m4a?fromtag=46", // 歌曲url
+      src: song.song_url, // 歌曲url
       title: song.songname, // 歌曲名称
 
       singer: song.singername,  // 歌手名称

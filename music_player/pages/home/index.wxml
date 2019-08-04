@@ -5,12 +5,13 @@
 <!-- 引入公共跳转方法 -->
 <wxs src='../../common/navigator.wxs' module='navi'></wxs>
 
+
 <!--pages/home/index.wxml-->
 <view class='container'>
 <!-- 头部 -->
   <view class='header'>
     <navigator class='on' hover-class='on'>推荐</navigator>
-    <navigator hover-class='on'>歌单</navigator>
+    <!-- <navigator url='/pages/search/list' hover-class='on'>歌单</navigator> -->
     <navigator url='/pages/search/index' hover-class='on'>搜索</navigator>
   </view>
 
@@ -31,13 +32,13 @@
     </navigator>
   </view>
 
-  <!-- 热门歌曲 -->
+  <!-- 推荐歌单 -->
   <view class='hot-music'>
     <view class='music-item' wx:for='{{sheets}}' wx:key='index' wx:for-item="sheet">
-      <navigator url='{{navi.deSheetUrl(sheet)}}' class='list-head' hover-class='none'>
+      <view class='list-head' hover-class='none'>
         <image src='/images/list-cell.png'></image>
         <text>{{sheet.name}}</text>
-      </navigator>
+      </view>
 
       <view class='list-body'>
         <template is='song-list' data='{{...sheet}}' />
