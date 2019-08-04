@@ -15,7 +15,7 @@
 .song text{
   display: block;
   padding: 3px 0 8px;
-  line-height: 1.5;
+  line-height: 1.2;
   max-height: 35px;
   overflow: hidden;
   font-size: 12px;

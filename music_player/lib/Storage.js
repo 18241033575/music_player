@@ -64,7 +64,10 @@ export default class Storage{
   static getWhere(action){
 
     if(this.whereFn){
-      return this.whereFn;
+
+      const whereFn = this.whereFn;
+      this.whereFn = null;
+      return whereFn;
     }else{
       throw new Error(`调用 ${action} 方法时请先调用where方法查询`)
     }
@@ -75,6 +78,20 @@ export default class Storage{
   where(...args){
 
     let [key ,compare ,value] = args;
+
+    if(/object/i.test(typeof key)){
+
+      for(let k in key){
+
+        if(Array.isArray(key[k])){
+          this.where(k,...key[k]);
+        }else{
+          this.where(k,key[k]);
+        }
+      }
+      return this;
+    }
+
     if(value === undefined){
       value = compare;
       compare = "=";
@@ -85,6 +102,34 @@ export default class Storage{
 
     // 用户传递进来的是否为当前支持的对比方式
     if(compareFn){
+
+      if(!this.compareFn){
+
+        // 构建一个where方法
+        const whereFn = (item)=>{
+
+          // 用来计数
+          let compareNum = 0;
+          whereFn.compare.forEach(compare=>{
+
+            compareNum += ~~compare.compareFn(item[compare.key],compare,value);
+          })
+
+          return compareNum = whereFn.compare.length;
+        };
+
+        // 定义数组来存对比方式
+        whereFn.compare = [];
+
+        // 赋值到this
+        this.whereFn = whereFn;
+
+      }
+
+      // 记录当前对比条件
+      this.whereFn.compare.push({
+        key,value,compareFn
+      })
 
       // 构建where 查询函数
       this.whereFn = (item)=>{
@@ -118,8 +163,9 @@ export default class Storage{
   del(){
 
     this.cache.del = {
-      where: Storageaa.getWhere.call(this,"del")
+      where: Storage.getWhere.call(this,"del")
     }
+    return this;
   }
 
   // 修改数据
@@ -143,6 +189,9 @@ export default class Storage{
     // 先拿本地数据，与缓存合并保存
     const db =Storage.getDb(this.dbname);
 
+    // 如果需要排序
+    this.sortFn && db.sort(this.sortFn);
+
     return db.find(Storage.getWhere.call(this,"find"));
   }
 
@@ -154,11 +203,19 @@ export default class Storage{
       data = db.filter(Storage.getWhere.call(this, "select"));
 
     // 如果需要排序
-    this.sortFn && data.sort(this.sortFn)
+    this.sortFn && db.sort(this.sortFn);
     return this.sliceArg ? data.slice(...this.sliceArg) : data;
   };
 
- 
+ // 查询所有数据
+ all(){
+
+   const data = Storage.getDb(this.dbname);
+
+   // 如果需要排序
+   this.sortFn && data.sort(this.sortFn);
+   return this.sliceArg ? data.slice(...this.sliceArg) : data;
+ }
 
   // 排序 默认正序
   order(key,sort="ssc"){

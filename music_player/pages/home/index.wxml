@@ -2,19 +2,22 @@
 <import src='/template/song/song.wxml' />
 <import src='/template/public/bottom-play.wxml' />
 
+<!-- 引入公共跳转方法 -->
+<wxs src='../../common/navigator.wxs' module='navi'></wxs>
+
 <!--pages/home/index.wxml-->
 <view class='container'>
 <!-- 头部 -->
   <view class='header'>
     <navigator class='on' hover-class='on'>推荐</navigator>
     <navigator hover-class='on'>歌单</navigator>
-    <navigator hover-class='on'>搜索</navigator>
+    <navigator url='/pages/search/index' hover-class='on'>搜索</navigator>
   </view>
 
   <!-- banner -->
   <view class='home-banner'>
     <swiper autoplay interval='3000' indicator-active-color='#b3d4db' indicator-dots indicator-color='#fff'>
-      <swiper-item wx:for="{{ banner }}" bindtap="actionBanner" data-action='{{bannerItem.atype}}' wx:key='index' wx:for-item="bannerItem">
+      <swiper-item wx:for="{{ banner }}" bindtap="actionBanner" data-action='{{bannerItem}}' wx:key='index' wx:for-item="bannerItem">
         <image src="{{bannerItem.img}}"></image>
       </swiper-item>
     </swiper>
@@ -22,7 +25,7 @@
 
   <!-- 国家地区 -->
   <view class='orign-type'>
-    <navigator wx:for='{{ region }}' wx:for-item='regionItem'  wx:key='index'>
+    <navigator url='{{navi.deSheetUrl(regionItem)}}'  wx:for='{{ region }}' wx:for-item='regionItem'  wx:key='index' hover-class='none'>
       <image src='/images/Music.png'></image>
       <text>{{ regionItem.name }}</text>
     </navigator>
@@ -31,15 +34,16 @@
   <!-- 热门歌曲 -->
   <view class='hot-music'>
     <view class='music-item' wx:for='{{sheets}}' wx:key='index' wx:for-item="sheet">
-      <navigator class='list-head' hover-class='none'>
+      <navigator url='{{navi.deSheetUrl(sheet)}}' class='list-head' hover-class='none'>
         <image src='/images/list-cell.png'></image>
         <text>{{sheet.name}}</text>
       </navigator>
 
       <view class='list-body'>
-        <template is='song-list' data="{{...sheet}}" />
+        <template is='song-list' data='{{...sheet}}' />
       </view>
     </view> 
   </view>
 </view>
+<!-- 底部播放器 -->
 <template is='bottom-play' />

@@ -1,9 +1,15 @@
 {
   "pages": [
-    "pages/home/index"
+    "pages/home/index",
+    "pages/search/list",
+    "pages/search/index",
+    
+    "pages/sheet/list"
   ],
   "window": {
     "navigationBarBackgroundColor": "#b3d4db",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": ["audio"]
 }

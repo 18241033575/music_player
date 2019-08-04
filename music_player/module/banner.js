@@ -10,7 +10,16 @@ export default class Banner{
 
   // 跳转方法
   static actionBanner(event){
-    console.log(event);
+
+    const action = event.currentTarget.dataset.action;
+
+    // 是否为专题跳转
+    if (action.atype === 0){
+
+      wx.navigateTo({
+        url: '/pages/sheet/list?id=' + action.data.id + "&name=" + action.data.name,
+      })
+    }
   }
   
   // 获取banner图信息,多种类型，跳转专题、单曲推荐
@@ -20,7 +29,11 @@ export default class Banner{
     // 专题
     data.push({
       img: "http://p1.music.126.net/cfcmKhUZHOB-SiTKmbmFuw==/109951163956028440.jpg",
-      atype: 0 //专题
+      atype: 0, //专题
+      data: {
+        id: 26,
+        name: "热歌榜"
+      }
     });
 
     // 单曲推荐
@@ -34,7 +47,6 @@ export default class Banner{
       img: "http://p1.music.126.net/GL4z3ludIHnVHpcuIwsFYQ==/109951163955952779.jpg",
       atype: 1 //单曲推荐
     });
-
 
     // 用promise模拟后台请求返回数据
     return new Promise((resolve)=>{
