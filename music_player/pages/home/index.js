@@ -64,7 +64,8 @@ const $page = new pageModule({
     arg.forEach((res,key)=>{
       sheetData.push(Object.assign({
         songs: res.data.result,
-      }, sheet[key]));
+      },sheet[key])
+      )
     });
 
     this.setData({ sheets: sheetData})

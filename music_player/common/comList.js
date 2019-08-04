@@ -46,3 +46,9 @@ export const request = {
 request.topid = request.host + "/artist/list?cat=";//歌单
 request.query = request.host + "query/";//搜索
 request.lyrics = request.host + "lyrics/";//歌词
+
+
+// request.topid = request.host + "/artist/list?";//歌单
+// request.query = request.host + "query/";//搜索
+// request.lyrics = request.host + "lyrics/";//歌词
+

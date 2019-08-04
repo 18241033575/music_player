@@ -1,0 +1,9 @@
+/* pages/search/list.wxss */
+
+/* 引入CSS */
+@import "/template/song/song.wxss";
+@import "/template/public/bottom-play.wxss";
+
+.container{
+  padding-bottom: 50px;
+}

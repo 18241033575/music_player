@@ -1,0 +1,17 @@
+<!--pages/search/list.wxml-->
+<!-- 引入模板 -->
+<import src='/template/song/song.wxml' />
+<import src='/template/public/bottom-play.wxml' />
+
+
+<!-- 歌单列表 -->
+<view class='container'>
+  <scroll-view class='scroll-songs'>
+    <view class='scroll-songs-view'>
+       <template is='song-list' data="{{songs}}" />
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 底部播放器 -->
+<template is='bottom-play'/>

@@ -1,0 +1,22 @@
+@import "/template/public/bottom-play.wxss"
+@import "query-form.wxss"
+
+/* pages/search/index.wxss */
+
+
+.search-history{
+  padding: 20px 10px 0;
+}
+.history-item{
+  display: flex;
+}
+.history-item image{
+  width: 25px;
+  height: 25px;
+}
+.history-item navigator{
+  flex: 1;
+  line-height: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}

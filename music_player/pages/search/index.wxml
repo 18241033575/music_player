@@ -1,0 +1,20 @@
+<import src='query-form.wxml' />
+<import src='/template/public/bottom-play.wxml' />
+<!--pages/search/index.wxml-->
+<view class='container'>
+
+  <!-- 搜索框 -->
+  <template is='query-form' data='{{q}}' />
+
+  <!-- 搜索列表 -->
+  <view class='search-history'>
+    <view class='history-item' wx:for='{{list}}' wx:key='{{index}}'>
+      <image src='/images/bg.jpg'></image>
+      <navigator hover-class='none'>{{item.name}}</navigator>
+      <image src='/images/bg.jpg' data-song='{{item.name}}' bindtap='del'></image>
+    </view>
+  </view>
+
+  <!-- 底部播放器 -->
+  <template is='bottom-play' />
+</view>

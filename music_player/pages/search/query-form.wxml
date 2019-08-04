@@ -1,0 +1,9 @@
+ 
+  <template name='query-form'>
+    <form class='query-form' bindsubmit='query'>
+      <button form-type='submit'>
+        <image src='/images/bg.jpg'></image>
+      </button>
+      <input name="q" value='{{q}}'  />
+    </form>
+  </template>
