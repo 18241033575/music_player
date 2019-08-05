@@ -1,6 +1,6 @@
 <!-- 底部播放器 -->
 <template name='bottom-play'> 
-  <view class='bottom-player'>
+  <navigator url='/pages/play-page/playing' hover-class='hover-player' class='bottom-player'>
     <view class='player-cover'>
       <image src='/images/bg.jpg' mode='widthFix'></image>
     </view>
@@ -11,7 +11,7 @@
 
     <view class='player-album'>
       <text class='subtr'>一百万个可能一百万个可能一百万个可能一百万个可能一百万个可能</text>
-      <text>歌手</text>
+      <text>{{}}</text>
     </view>
-  </view>
+  </navigator>
 </template>

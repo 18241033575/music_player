@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/play-page/playing",
     "pages/home/index",
     "pages/search/list",
     "pages/search/index",
-    
     "pages/sheet/list"
   ],
   "window": {
@@ -11,5 +11,7 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "requiredBackgroundModes": ["audio"]
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }

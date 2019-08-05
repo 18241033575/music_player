@@ -1,6 +1,6 @@
 
 <!-- 引入模板 -->
-<import src='/template/song/song.wxml' />
+<import src='/template/song/recommend.wxml' />
 <import src='/template/public/bottom-play.wxml' />
 
 <!-- 歌单列表 -->

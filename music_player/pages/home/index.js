@@ -72,7 +72,7 @@ const $page = new pageModule({
   },
   // 播放歌曲
   onPlayer(event) {
-    
+    console.log(event)
     const song = event.target.dataset.song,  // 播放歌曲
       songs = event.currentTarget.dataset.songs; // 播放歌单
 

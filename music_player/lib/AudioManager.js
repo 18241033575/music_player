@@ -16,21 +16,20 @@ export default class AudioManager{
   // 设置当前播放的歌曲歌单
   static setSong(song,songs){
 
-    console.log(song);
 
     // 播放器的属性
     const audioAttr = {
-      src: song.song_url, // 歌曲url
-      title: song.songname, // 歌曲名称
+      src: song.url, // 歌曲url
+      title: song.name, // 歌曲名称
 
-      singer: song.singername,  // 歌手名称
-      coverImgUrl: song.albumpic_small // 封面
+      singer: song.singer,  // 歌手名称
+      coverImgUrl: song.cover // 封面
     };
 
     // 设置到 audio 播放器上 如果设置了src 会自动播放
     Object.assign(audio,audioAttr);
 
-
+    console.log(audioAttr)
 
   }
 
