@@ -2,16 +2,16 @@
 <template name='bottom-play'> 
   <navigator url='/pages/play-page/playing' hover-class='hover-player' class='bottom-player'>
     <view class='player-cover'>
-      <image src='/images/bg.jpg' mode='widthFix'></image>
+      <image src="{{cover}}" mode='widthFix'></image>
     </view>
 
   <view class='player-btn'>
-      <image src='/images/download.png'></image>
+      <image src='/images/player.png'></image>
     </view>
 
     <view class='player-album'>
-      <text class='subtr'>一百万个可能一百万个可能一百万个可能一百万个可能一百万个可能</text>
-      <text>{{}}</text>
+      <text class='subtr'>{{ name }}</text>
+      <text>{{ singer }}</text>
     </view>
   </navigator>
 </template>

@@ -14,7 +14,14 @@ export default class AppModule extends Event{
   }
 
   // 给当前页面设置数据,不要在实际显示的页面设置数据，通过assign代理直接给当前页设置
-  assign(key,val){
+  static assign(key,val){
+    // 等待 app 以及 page 的onload
+    if(!app || !app.page){
+      // console.log(1);
+     
+      return setTimeout(AppModule.assign.bind(null,key,val),0);
+    }
+
     // 拿到当前显示的页面实例
     const page = app.page.page,
           kType = typeof key;
@@ -65,10 +72,10 @@ export default class AppModule extends Event{
   start() {
 
     const appExample = this;
+
     // 监听一个app的加载事件
-    this.oneEvent('onLauch',function(){
+    this.oneEvent('onLaunch',function(){
        Reflect.set(this,'example',appExample);
-      
       //  拿到app实例
       app = this;
     })

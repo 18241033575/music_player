@@ -71,19 +71,18 @@ const $page = new pageModule({
     this.setData({ sheets: sheetData})
   },
   // 播放歌曲
-  onPlayer(event) {
-    console.log(event)
-    const song = event.target.dataset.song,  // 播放歌曲
-      songs = event.currentTarget.dataset.songs; // 播放歌单
+  // onPlayer(event) {
+  //   const song = event.target.dataset.song,  // 播放歌曲
+  //     songs = event.currentTarget.dataset.songs; // 播放歌单
 
-    // 可能有外边距
-    if(song){
+  //   // 可能有外边距
+  //   if(song){
 
-      // 设置当前播放歌曲、歌单
-      AudioManager.setSong(song,songs);
-    }
+  //     // 设置当前播放歌曲、歌单
+  //     AudioManager.setSong(song,songs);
+  //   }
 
-  }
+  // }
 });
 
 

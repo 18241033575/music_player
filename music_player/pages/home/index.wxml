@@ -27,7 +27,7 @@
   <!-- 国家地区 -->
   <view class='orign-type'>
     <navigator url='{{navi.deSheetUrl(regionItem)}}'  wx:for='{{ region }}' wx:for-item='regionItem'  wx:key='index' hover-class='none'>
-      <image src='/images/Music.png'></image>
+      <image src='{{ regionItem.url }}'></image>
       <text>{{ regionItem.name }}</text>
     </navigator>
   </view>

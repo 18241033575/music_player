@@ -86,7 +86,8 @@ const $page = new PageModule({
   // 播放歌曲
   onPlayer(event) {
     let songId = event.target.dataset.song.al.id,
-        songName = event.target.dataset.song.name;
+        songName = event.target.dataset.song.name,
+      songCover = event.target.dataset.song.al.picUrl;
     let song = {},
       songs = {};
     if (songId){
@@ -97,10 +98,12 @@ const $page = new PageModule({
           success: resolve
         })
       }).then((resolve)=>{
+        let flag = true;
         resolve.data.result.songs.forEach((item)=>{
-          if (item.name == songName){
+          if ((item.name == songName) && flag){
+            flag = false;
             song.name = item.name; // 播放歌曲
-            song.cover = item.artists[0].img1v1Url; // 封面
+            song.cover = songCover; // 封面
             songs.name = songName; // 播放歌单
             song.singer = item.artists[0].name; // 歌手
             const URL = new Promise((resolve1)=>{
@@ -113,7 +116,8 @@ const $page = new PageModule({
               song.url = resolve1.data.data[0].url;
 
                // 设置当前播放歌曲、歌单
-              AudioManager.setSong(song, songs)
+              AudioManager.setSong(song, songs);
+              flag = false;
             })
           }
         })

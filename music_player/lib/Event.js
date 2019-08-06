@@ -20,7 +20,6 @@ export default class Event{
       // 将页面this实例保存起来
       const page = this,
             data = [];
-
       // 事件队列方法
       // const eTypeFn = Reflect.get(that,events,eType);
       const eTypeFn = Array.from(Reflect.get(that.events, eType));
@@ -42,7 +41,6 @@ export default class Event{
   // 获取事件队列
   getEvent(eType){
     let eTypeFn = Reflect.get(this.events,eType);
-
     // 判断是否为空
     if(!Array.isArray(eTypeFn)){
       eTypeFn = [];

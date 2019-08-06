@@ -1,4 +1,4 @@
-
+import AppModule from '../lib/App.js';
 // 管理全局唯一统一的背景播放器
 const audio = wx.getBackgroundAudioManager();
 
@@ -21,20 +21,20 @@ export default class AudioManager{
     const audioAttr = {
       src: song.url, // 歌曲url
       title: song.name, // 歌曲名称
-
       singer: song.singer,  // 歌手名称
       coverImgUrl: song.cover // 封面
     };
 
+    AudioManager.saveSong(song)
+
     // 设置到 audio 播放器上 如果设置了src 会自动播放
     Object.assign(audio,audioAttr);
+  }
 
-    console.log(audioAttr)
-
+  static saveSong(song,songs){
+    AppModule.assign({ song });
   }
 
   // 构造方法
-  constructor(){
-
-  }
+  constructor(){}
 }
