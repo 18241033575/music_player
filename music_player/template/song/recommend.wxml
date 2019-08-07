@@ -1,0 +1,17 @@
+<wxs src='../../common/playing.wxs' module='navi'></wxs>
+
+<!-- 歌曲的列表 -->
+<template name='song-list'>  
+  <view  class='song-list songs-view3' bindtap='onPlayer' data-songs="{{songs}}">
+    <template is='song-view' wx:for='{{songs}}' wx:for-item='song' data='{{song}}' wx:key='index' />
+  </view>
+</template>
+
+
+<!-- 歌曲的视图 -->
+<template name='song-view'>  
+  <navigator url='{{navi.dePlayingUrl(song)}}'  class='song'>
+    <image src='{{song.picUrl}}' mode='widthFix' data-song="{{song}}"></image>
+    <text data-song="{{song}}">{{song.name}}</text>
+  </navigator>
+</template>

@@ -1,0 +1,10 @@
+// 只能写es5
+
+// 用来返回一个歌单的跳转url
+function dePlayingUrl(sheet) {
+  return "/pages/play-page/playing?&name=" + sheet.name;
+}
+
+module.exports = {
+  dePlayingUrl: dePlayingUrl
+}

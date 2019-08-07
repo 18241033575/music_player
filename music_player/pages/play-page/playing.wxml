@@ -1,0 +1,9 @@
+<!--pages/play-page/playing.wxml-->
+<view class='playing'>
+  <image class='bg' src='{{coverUrl}}'></image>
+  <view class='rote_cover'>
+    <image src='{{coverUrl}}'>
+    
+    </image>
+  </view>
+</view>

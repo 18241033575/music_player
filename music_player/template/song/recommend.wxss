@@ -1,0 +1,22 @@
+.songs-view3 .song{
+  margin-right: 3.5%;
+  width: 31%;
+}
+.songs-view3 :nth-child(3n){
+  margin-right: 0;
+}
+.song-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.song image{
+  width: 100%;
+}
+.song text{
+  display: block;
+  padding: 3px 0 8px;
+  line-height: 1.2;
+  max-height: 35px;
+  overflow: hidden;
+  font-size: 12px;
+}

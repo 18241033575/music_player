@@ -1,0 +1,11 @@
+// 只能写es5
+
+// 用来返回一个歌单的跳转url
+function deSearchUrl(sheet) {
+
+  return "/pages/sheet/list?id=" + sheet.id + "&name=" + sheet.name;
+}
+
+module.exports = {
+  deSearchUrl: deSearchUrl
+}

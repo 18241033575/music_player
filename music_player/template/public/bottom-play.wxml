@@ -1,6 +1,7 @@
+
 <!-- 底部播放器 -->
 <template name='bottom-play'> 
-  <navigator url='/pages/play-page/playing' hover-class='hover-player' class='bottom-player'>
+  <view class='bottom-player'>
     <view class='player-cover'>
       <image src="{{cover}}" mode='widthFix'></image>
     </view>
@@ -13,5 +14,5 @@
       <text class='subtr'>{{ name }}</text>
       <text>{{ singer }}</text>
     </view>
-  </navigator>
+  </view>
 </template>

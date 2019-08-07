@@ -1,4 +1,3 @@
-
 <!-- 引入模板 -->
 <import src='/template/song/recommend.wxml' />
 <import src='/template/public/bottom-play.wxml' />
