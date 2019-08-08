@@ -2,6 +2,9 @@ import pageModule from "../../lib/Page.js";
 import  Banner from "../../module/banner.js";
 import { region, sheet, request} from "../../common/comList.js";
 import AudioManager from "../../lib/AudioManager.js";
+import ListenSongs from "../../module/listenSongs.js";
+
+const $listen_song = new ListenSongs();
 
 // 当前页面的命名空间
 const $namespace = "home/index";
@@ -9,6 +12,9 @@ const $namespace = "home/index";
 // 实例page模型
 
 const $page = new pageModule({
+  data(){
+    oldlist: []
+  },
 
   // 监听一个加载事件
   onLoad(o){
@@ -30,6 +36,8 @@ const $page = new pageModule({
     .findNameSpace($namespace)
     .then(this.setSheet.bind(this));
 
+    // 获取歌曲播放历史
+    this.updata()
   },
 
   // 获取歌单信息
@@ -83,6 +91,15 @@ const $page = new pageModule({
   //   }
 
   // }
+  onShow(){
+    this.updata()
+  },
+  updata(){
+    let data = $listen_song.all();
+    this.setData({
+      oldlist: data
+    })
+  }
 });
 
 

@@ -12,4 +12,4 @@
 </view>
 
 <!-- 底部播放器 -->
-<template is='bottom-play' data="{{...song}}"/>
+<template is='bottom-play' data="{{...oldlist[0]}}"/>

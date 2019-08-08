@@ -2,8 +2,15 @@
 <view class='playing'>
   <image class='bg' src='{{coverUrl}}'></image>
   <view class='rote_cover'>
-    <image src='{{coverUrl}}'>
+    <image src='{{coverUrl}}' class='{{songState?"roted":""}}'>
     
     </image>
+  </view>
+  <view class='controller'>
+    <view class='prev'><image src='/images/previous.png'></image></view>
+    <view class='song_state' bindtap='change_state' data-sign='{{songState}}'>
+      <image src='{{songState?"/images/Pause.png":"/images/play.png"}}'></image>
+    </view>
+    <view class='next'><image src='/images/next.png'></image></view>
   </view>
 </view>

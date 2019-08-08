@@ -35,6 +35,14 @@ export default class AudioManager{
     AppModule.assign({ song });
   }
 
+  // 暂停音乐
+  static stopSong(){
+    audio.pause()
+  }
+  // 播放音乐
+  static playSong(){
+    audio.play()
+  }
   // 构造方法
   constructor(){}
 }

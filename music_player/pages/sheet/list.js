@@ -1,6 +1,8 @@
 import PageModule from "../../lib/Page.js"
 import AudioManager from "../../lib/AudioManager.js";
+import ListenSong from "../../module/listenSongs.js"
 
+const $listen_songs = new ListenSong(); 
 
 const $page = new PageModule({
 
@@ -10,7 +12,8 @@ const $page = new PageModule({
     row: 20, // 每页多少条数据
     songs: [], // 数据容器数组
     sheet_id: '', // 歌单的id
-    sheet_name: '' // 歌曲区域名称
+    sheet_name: '', // 歌曲区域名称
+    oldlist: [] // 历史播放记录
   },
 
   onLoad(o) {
@@ -28,6 +31,9 @@ const $page = new PageModule({
     })
 
     this.loadPage();
+    
+    // 请求歌曲历史记录
+    this.updata();
   },
 
   // 加载数据
@@ -117,12 +123,20 @@ const $page = new PageModule({
 
                // 设置当前播放歌曲、歌单
               AudioManager.setSong(song, songs);
+              $listen_songs.add(song)
               flag = false;
             })
           }
         })
       })
     }
+  },
+  updata() {
+    const data = $listen_songs.all();
+    this.setData({ oldlist: data});
+  },
+  onShow(){
+    this.updata()
   }
 })
 

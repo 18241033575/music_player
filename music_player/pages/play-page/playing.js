@@ -1,10 +1,11 @@
 import PageModule from "../../lib/Page.js";
 import { reqUrl1 } from "../../common/comList.js";
-
+import AudioManager from "../../lib/AudioManager.js";
 
 const $page = new PageModule({
   data:{
-    coverUrl: ''
+    coverUrl: '',
+    songState: true
   },
   onLoad(o) {
     // 需要查询的歌单
@@ -38,6 +39,17 @@ const $page = new PageModule({
             }) 
           })
     })
+  },
+  change_state(event){
+    console.log(event)
+    let sign = event.currentTarget.dataset.sign;
+    if (sign){
+      AudioManager.stopSong()
+      this.setData({ songState: false})
+    }else{
+      AudioManager.playSong()
+      this.setData({ songState: true })
+    }
   }
 })
 

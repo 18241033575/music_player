@@ -9,9 +9,9 @@
   <!-- 搜索列表 -->
   <view class='search-history'>
     <view class='history-item' wx:for='{{list}}' wx:key='{{index}}'>
-      <image src='/images/bg.jpg'></image>
+      <image src='/images/list-cell.png'></image>
       <navigator hover-class='none'>{{item.name}}</navigator>
-      <image src='/images/bg.jpg' data-song='{{item.name}}' bindtap='del'></image>
+      <image src='/images/del.png' data-song='{{item.name}}' bindtap='del'></image>
     </view>
   </view>
 
