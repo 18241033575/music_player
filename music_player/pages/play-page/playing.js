@@ -17,12 +17,10 @@ const $page = new PageModule({
   onLoad(o) {
     // 需要查询的歌单
     const sheet = o;
-    console.log(sheet)
     // 显示导航标题
     wx.setNavigationBarTitle({
       title: sheet.name,
     })
-    const songPicUrl = 'http://p1.music.126.net/';
     let song = {},
         songs = {};
     const DET = new Promise((resolve) => {
@@ -37,8 +35,7 @@ const $page = new PageModule({
       song.name = songMsg.name;
       songs.name = songMsg.album.artist.name; // 播放歌单
       song.singer = sheet.singer; // 歌手
-
-      song.cover = songPicUrl + sheet.picUrl1 + '==' + sheet.picUrl2 + sheet.picUrl3; 
+      song.cover = sheet.picUrl1 + sheet.picUrl2 + '==/' + sheet.picUrl3 + sheet.picUrl4;     
       this.setData({ coverUrl: song.cover})
       const DETS = new Promise((resolve1) => {
         wx.request({
@@ -58,9 +55,10 @@ const $page = new PageModule({
           // 提示地址错误
           wx.showToast({
             title: '音乐地址错误',
-            icon: 'error',
+            // icon: 'error',
             duration: 2000
           })
+          SongState.setState(false)
         }
       })
     })

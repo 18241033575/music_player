@@ -24,7 +24,7 @@ $page.start({
         success: resolve
       })
     }).then((resolve) => {
-      console.log(resolve)
+      
     })
   }
 });

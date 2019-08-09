@@ -30,6 +30,8 @@ const $page = new PageModul({
     $search_songs.add(q);
     // 更新数据
     this.updata();
+    // 跳转播放页面
+    this.search_song();
   },
 
   del(event){
@@ -46,16 +48,35 @@ const $page = new PageModul({
 
   updata(){
     const data = $search_songs.all();
-    console.log(data);
-    data.forEach((item)=>{
-        console.log(item)
-        let SEARCH = new Promise((resolve)=>{
-            wx.request({
-              url: '',
-            })
-        })
-    })
     this.setData({ list: data, q: '' });
+  },
+  search_song(){
+    const data = $search_songs.all();
+    data.forEach((item) => {
+      let SEARCH = new Promise((resolve) => {
+        wx.request({
+          url: 'http://localhost:4000/search?keywords=' + item.name,
+          type: 'get',
+          success: resolve
+        })
+      }).then((resolve) => {
+        let songId = resolve.data.result.songs[0].id;
+        let SONGDET = new Promise((resolve1) => {
+          wx.request({
+            url: 'http://localhost:4000/song/detail?ids=' + songId,
+            type: 'get',
+            success: resolve1
+          })
+        }).then((resolve1) => {
+          item.picUrl = resolve1.data.songs[0].al.picUrl;
+          item.artistName = resolve1.data.songs[0].ar[0].name;
+          this.setData({ list: data, q: '' });
+          wx.navigateTo({
+            url: '/pages/play-page/playing',
+          })
+        })
+      })
+    })
   }
 });
 

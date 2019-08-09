@@ -138,11 +138,13 @@ const $page = new pageModule({
         songState: false
       })
     } else {
-      AudioManager.setSong(this.data.oldlist[0])
-      AudioManager.playSong()
-      this.setData({
-        songState: true
-      })
+      if (this.data.oldlist[0]){
+        AudioManager.setSong(this.data.oldlist[0])
+        AudioManager.playSong()
+        this.setData({
+          songState: true
+        })
+      }
     }
     SongState.setState(!sign)
   }

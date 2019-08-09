@@ -1,5 +1,4 @@
 <import src='query-form.wxml' />
-<import src='/template/public/bottom-play.wxml' />
 
 <wxs src='../../common/playing.wxs' module='navi'></wxs>
 
@@ -18,6 +17,4 @@
     </view>
   </view>
 
-  <!-- 底部播放器 -->
-  <template is='bottom-play' />
 </view>

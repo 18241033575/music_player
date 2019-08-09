@@ -73,7 +73,6 @@ const $page = new PageModule({
 
   // 处理数据
   codePage(res) {
-    console.log(res)
     // 隐藏加载图标
     wx.hideLoading();
     if (this.data.sheet_id < 100) {
@@ -155,10 +154,11 @@ const $page = new PageModule({
       AudioManager.stopSong()
       this.setData({ songState: false })
     } else {
-      console.log(this.data.oldlist[0])
-      AudioManager.setSong(this.data.oldlist[0])
-      AudioManager.playSong()
-      this.setData({ songState: true })
+      if (this.data.oldlist[0]){
+        AudioManager.setSong(this.data.oldlist[0])
+        AudioManager.playSong()
+        this.setData({ songState: true })
+      }
     }
     SongState.setState(sign)
   }
