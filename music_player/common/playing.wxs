@@ -2,7 +2,20 @@
 
 // 用来返回一个歌单的跳转url
 function dePlayingUrl(sheet) {
-  return "/pages/play-page/playing?&name=" + sheet.name;
+  if (sheet.picUrl != ''){
+    sheet.picUrl = sheet.picUrl.slice(24);
+    sheet.picUrl1 = sheet.picUrl.slice(0,24);
+    sheet.picUrl2 = sheet.picUrl.slice(24, 39);
+    sheet.picUrl3 = sheet.picUrl.slice(39);
+  }else{
+    sheet.picUrl = '';
+  }
+  if (sheet.artistName){
+    sheet.singer = sheet.artistName
+  }else{
+    sheet.singer = sheet.ar[0].name
+  }
+  return "/pages/play-page/playing?name=" + sheet.name + "&picUrl1=" + sheet.picUrl1 + "&picUrl2=" + sheet.picUrl2 + "&picUrl3=" + sheet.picUrl3 + "&singer=" + sheet.singer;
 }
 
 module.exports = {

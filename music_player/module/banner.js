@@ -26,31 +26,8 @@ export default class Banner{
 
   getBanner(){
     const data = [];
-    // 专题
-    data.push({
-      img: "http://p1.music.126.net/cfcmKhUZHOB-SiTKmbmFuw==/109951163956028440.jpg",
-      atype: 0, //专题
-      data: {
-        id: 26,
-        name: "热歌榜"
-      }
-    });
 
-    // 单曲推荐
-    data.push({
-      img: "http://p1.music.126.net/5dQZxhChU-f7zbZLgGaFyA==/109951163956031123.jpg",
-      atype: 1 //单曲推荐
-    });
-
-    // 单曲推荐
-    data.push({
-      img: "http://p1.music.126.net/GL4z3ludIHnVHpcuIwsFYQ==/109951163955952779.jpg",
-      atype: 1 //单曲推荐
-    });
-
-    // 用promise模拟后台请求返回数据
-    return new Promise((resolve)=>{
-      resolve(data);
-    });
+    
+   
   } 
 }

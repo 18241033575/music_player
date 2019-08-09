@@ -1,5 +1,8 @@
 <import src='query-form.wxml' />
 <import src='/template/public/bottom-play.wxml' />
+
+<wxs src='../../common/playing.wxs' module='navi'></wxs>
+
 <!--pages/search/index.wxml-->
 <view class='container'>
 
@@ -10,7 +13,7 @@
   <view class='search-history'>
     <view class='history-item' wx:for='{{list}}' wx:key='{{index}}'>
       <image src='/images/list-cell.png'></image>
-      <navigator hover-class='none'>{{item.name}}</navigator>
+      <navigator url='{{navi.dePlayingUrl(item)}}' hover-class='none'>{{item.name}}</navigator>
       <image src='/images/del.png' data-song='{{item.name}}' bindtap='del'></image>
     </view>
   </view>

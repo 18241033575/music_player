@@ -46,6 +46,15 @@ const $page = new PageModul({
 
   updata(){
     const data = $search_songs.all();
+    console.log(data);
+    data.forEach((item)=>{
+        console.log(item)
+        let SEARCH = new Promise((resolve)=>{
+            wx.request({
+              url: '',
+            })
+        })
+    })
     this.setData({ list: data, q: '' });
   }
 });

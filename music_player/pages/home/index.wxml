@@ -18,7 +18,7 @@
   <!-- banner -->
   <view class='home-banner'>
     <swiper autoplay interval='3000' indicator-active-color='#b3d4db' indicator-dots indicator-color='#fff'>
-      <swiper-item wx:for="{{ banner }}" bindtap="actionBanner" data-action='{{bannerItem}}' wx:key='index' wx:for-item="bannerItem">
+      <swiper-item wx:for="{{ banner }}" data-action='{{bannerItem}}' wx:key='index' wx:for-item="bannerItem">
         <image src="{{bannerItem.img}}"></image>
       </swiper-item>
     </swiper>
@@ -47,4 +47,4 @@
   </view>
 </view>
 <!-- 底部播放器 -->
-<template is='bottom-play' data="{{...oldlist[0]}}" />
+<template is='bottom-play' data="{{songState,...oldlist[0]}}" />

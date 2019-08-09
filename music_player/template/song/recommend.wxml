@@ -2,7 +2,7 @@
 
 <!-- 歌曲的列表 -->
 <template name='song-list'>  
-  <view  class='song-list songs-view3' bindtap='onPlayer' data-songs="{{songs}}">
+  <view  class='song-list songs-view3' data-songs="{{songs}}">
     <template is='song-view' wx:for='{{songs}}' wx:for-item='song' data='{{song}}' wx:key='index' />
   </view>
 </template>

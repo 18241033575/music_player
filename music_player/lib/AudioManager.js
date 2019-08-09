@@ -16,6 +16,7 @@ export default class AudioManager{
   // 设置当前播放的歌曲歌单
   static setSong(song,songs){
     if (song.url !== null){
+      console.log(song)
       // 播放器的属性
       const audioAttr = {
         src: song.url, // 歌曲url

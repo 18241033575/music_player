@@ -6,8 +6,14 @@
       <image src="{{cover}}" mode='widthFix'></image>
     </view>
 
-  <view class='player-btn'>
-      <image src='/images/player.png'></image>
+    <view class='player-btn'>
+      <image 
+        src='{{songState?"/images/Pause.png":"/images/player.png"}}'  
+        bindtap='operateSongs'
+        data-sign ='{{songState}}'
+      >
+      
+      </image>
     </view>
 
     <view class='player-album'>
