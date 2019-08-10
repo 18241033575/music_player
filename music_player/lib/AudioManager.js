@@ -43,6 +43,11 @@ export default class AudioManager{
   static playSong(){
     audio.play()
   }
+  // 监听自然播放完毕
+  // audio.onEnded(){
+
+  // }
+
   // 构造方法
   constructor(){}
 }

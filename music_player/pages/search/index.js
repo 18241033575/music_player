@@ -11,7 +11,6 @@ const $page = new PageModul({
   },
 
   onLoad(){
-
     this.updata();
   },
 
@@ -49,9 +48,6 @@ const $page = new PageModul({
   updata(){
     const data = $search_songs.all();
     this.setData({ list: data, q: '' });
-  },
-  search_song(){
-    const data = $search_songs.all();
     data.forEach((item) => {
       let SEARCH = new Promise((resolve) => {
         wx.request({
@@ -71,12 +67,12 @@ const $page = new PageModul({
           item.picUrl = resolve1.data.songs[0].al.picUrl;
           item.artistName = resolve1.data.songs[0].ar[0].name;
           this.setData({ list: data, q: '' });
-          wx.navigateTo({
-            url: '/pages/play-page/playing',
-          })
         })
       })
     })
+  },
+  search_song(){
+    
   }
 });
 
